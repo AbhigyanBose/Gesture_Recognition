@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-
+from time import sleep
 
 def recognise(img):
     img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -19,14 +19,19 @@ def recognise(img):
     poly = cv2.approxPolyDP(cnt,epsilon,True)
     flag = len(poly)
     print(flag)
-    if(flag<=8)
+    f = open("op.txt",'w')
+    if(flag<=8):
         #insert logic for off
-    else
+        f.write("0")
+    else:
         #insert logic for on
+        f.write("1")
 
+    f.close()
 
+    sleep(0.5)
 
-    cv2.drawContours(img, [poly], 0, (0, 255, 0), 3)
+    #cv2.drawContours(img, [poly], 0, (0, 255, 0), 3)
     #cv2.imshow('Otsu_Result', img)
     #cv2.waitKey(0)
     #cv2.destroyAllWindows()
